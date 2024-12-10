@@ -1,9 +1,18 @@
 import { Col, Row, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removefavAction } from "../redux/actions";
 
 const Favourites = () => {
   const list = useSelector((state) => state.main.favourites);
+  const dispatch = useDispatch();
+  if (!list || list.length === 0) {
+    return (
+      <div>
+        <h2>No favourites found</h2>
+      </div>
+    );
+  }
   return (
     <div className="d-flex justify-content-center mt-5">
       <div>
@@ -25,6 +34,14 @@ const Favourites = () => {
                 xs={10}
               >
                 <Link to={`/${element}`}>{element}</Link>
+                <Button
+                  className="btn-danger"
+                  onClick={() => {
+                    dispatch(removefavAction(element));
+                  }}
+                >
+                  Delete
+                </Button>
               </Col>
             );
           })}

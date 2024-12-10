@@ -16,7 +16,7 @@ const Job = ({ data }) => {
       <Col xs={3}>
         <Button
           onClick={() => {
-            dispatch(addfavAction(data));
+            dispatch(addfavAction(data.company_name));
           }}
         >
           Add to favourites
