@@ -3,8 +3,7 @@ import mainReducer from "../reducers";
 import removeFavReducer from "../reducers/removeFavReducer";
 
 const rootStore = combineReducers({
-  main: mainReducer,
-  remove: removeFavReducer
+  main: mainReducer
 });
 const store = configureStore({
   reducer: rootStore
